@@ -1,0 +1,81 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en-gb" />
+    <title>Lord X of Y - Tom Curtis Portfolio</title>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <link rel="Start" href="/" />
+</head>
+
+<body>
+    <div id="main">
+    <h1>Lord X of Y</h1>
+    <p>This interactive map shows the geographical distribution of the House of Lords, based on members' territorial titles.</p>
+    <p>Unlike <abbr title="Members of Parliament">MPs</abbr>, Peers are not elected to represent particular constituences. However, their titles may reflect where their political and cultural sympathies lie when they decide how to vote.</p>
+
+    <svg id="lords_chart"></svg>
+    <div id="lord_map_key">
+        <input type="checkbox" onclick="toggleMap('all', this.checked)" id="lord_map_showAll" checked="checked" /><label for="lord_map_showAll">Show all</label>
+        <input type="checkbox" onclick="toggleMap('Labour', this.checked)" id="lord_map_labour" checked="true" /><label for="lord_map_labour">Labour</label>
+        <input type="checkbox" onclick="toggleMap('Conservative', this.checked)" id="lord_map_conservative" checked="true" /><label for="lord_map_conservative">Conservative</label>
+        <input type="checkbox" onclick="toggleMap('Liberal Democrat', this.checked)" id="lord_map_libdem" checked="true" /><label for="lord_map_libdem">Liberal Democrat</label>
+        <input type="checkbox" onclick="toggleMap('Crossbench', this.checked)" id="lord_map_crossbench" checked="true" /><label for="lord_map_crossbench">Crossbench</label>
+        <input type="checkbox" onclick="toggleMap('Plaid Cymru', this.checked)" id="lord_map_plaid" checked="true" /><label for="lord_map_plaid">Plaid Cymru</label>
+        <input type="checkbox" onclick="toggleMap('Green', this.checked)" id="lord_map_green" checked="true" /><label for="lord_map_green">Green</label>
+        <input type="checkbox" onclick="toggleMap('DUP', this.checked)" id="lord_map_dup" checked="true" /><label for="lord_map_dup"><abbr title="Democractic Unionist Party">DUP</abbr></label>
+        <input type="checkbox" onclick="toggleMap('UUP', this.checked)" id="lord_map_uup" checked="true" /><label for="lord_map_uup"><abbr title="Ulster Unionist Party">UUP</abbr></label>
+        <input type="checkbox" onclick="toggleMap('UKIP', this.checked)" id="lord_map_ukip" checked="true" /><label for="lord_map_uup"><abbr title="United Kingdom Independence Party">UKIP</abbr></label>
+        <input type="checkbox" onclick="toggleMap('Bishop', this.checked)" id="lord_map_bishop" checked="true" /><label for="lord_map_bishop">Bishop</label>
+        <input type="checkbox" onclick="toggleMap('Judge', this.checked)" id="lord_map_judge" checked="true" /><label for="lord_map_judge">Judge</label>
+        <input type="checkbox" onclick="toggleMap('Independent Labour', this.checked)" id="lord_map_indlab" checked="true" /><label for="lord_map_indlab">Independent Labour</label>
+        <input type="checkbox" onclick="toggleMap('Non-affiliated', this.checked)" id="lord_map_nonaff" checked="true" /><label for="lord_map_nonaff">Non-affiliated</label>
+        <input type="checkbox" onclick="toggleMap('Other', this.checked)" id="lord_map_other" checked="true" /><label for="lord_map_other">Other</label>
+    </div>
+    <div id="selected_lord" style="display:none;">
+        <h2 id="lord_title">No lord selected</h2>
+        <p id="lord_name">No lord selected</p>
+        <h3 id="lord_profile_h3">Profile</h3>
+        <p id="lord_profile">No lord selected</p>
+        <h3 id="lord_voting_h3">Voting record</h3>
+        <p id="lord_likes">No lord selected</p>
+        <p id="lord_dislikes">No lord selected</p>
+        <ul class="links">
+            <li><a id="lord_twfy" href="">Find out more about this Peer's voting record and speeches at TheyWorkForYou</a></li>
+            <li><a id="lord_wiki" href="">No lord selected</a></li>
+        </ul>
+    </div>
+    
+    <p>The map is populated from a <abbr title="Javascript object notation">JSON</abbr> file, which I made using a python script to download and process the data. It is available under an MIT licence</p>
+    <ul class="links">
+        <li><a href="https://github.com/dinotash/lord_x_of_y">Source code for Lord X of Y on Github</a></li>
+    </ul>
+
+    <div class="technical">
+    <h2>Data sources</h2>
+    <p>The list of members of the House of Lords was taken from TheyWorkForYou, including voting records and party affiliations. This was supplemented with further research.</p>
+    <ul class="links">
+        <li><a href="http://www.theyworkforyou.com/">TheyWorkForYou</a></li>
+    </ul>
+    <p>Peers' profiles are taken from the first paragraph of their wikipedia pages.</p>
+    <p>Territorial designations were mapped to latitude/longitude using the Google Maps <abbr title="application programming interface">API</abbr>. Where more than one Lord would occupy the same grid square, they have been spread out to the nearest available spaces. This may have produced errors, especially around the big cities.</p>
+    <p>Peers were then shown on the map as close as possible to their territorial domain, without overlapping. Peers were assigned locations in roughly alphabetical order, which leads to some strange results, especially around London.</p>
+    <p>All data as at 9 April 2015.</p>
+    </div>
+
+    <script type="text/javascript" src="lords.json" charset="utf-8"></script>
+    <script type="text/javascript" src="lords.js" charset="utf-8"></script>
+    
+    </div>
+
+<div id="navbar">
+    <a href="../index.html">Home</a>
+    <a href="../projects.html">Projects</a>
+    <a href="../github.html">Github</a>
+    <a href="../resume.pdf">Resume</a>
+    <a href="mailto:tom@chamberlaincurtis.com">Email</a>
+</div>
+
+</body>
+</html>
